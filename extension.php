@@ -67,7 +67,7 @@ return [
 	|
 	*/
 
-	'version' => '3.0.2',
+	'version' => '3.0.3',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -218,7 +218,79 @@ return [
 
 	'settings' => function(Settings $settings, Application $app)
 	{
+        $settings->find('platform')->section('orders', function ($s) {
 
+            $s->fieldset('orderspaymentthepay', function ($f) {
+
+                $f->field('environment', function ($f) {
+                    $f->name   = trans('sanatorium/orderspaymentthepay::settings.environment.label');
+                    $f->info   = trans('sanatorium/orderspaymentthepay::settings.environment.info');
+                    $f->type   = 'select';
+                    $f->config = 'sanatorium-orderspaymentthepay.environment';
+
+                    $f->option('testing', function ($o) {
+                        $o->value = 'testing';
+                        $o->label = trans('sanatorium/orderspaymentthepay::settings.environment.values.testing');
+                    });
+
+                    $f->option('production', function ($o) {
+                        $o->value = 'production';
+                        $o->label = trans('sanatorium/orderspaymentthepay::settings.environment.values.production');
+                    });
+                });
+
+                $f->name = trans('sanatorium/orderspaymentthepay::settings.title');
+
+                $f->field('gateUrl', function ($f) {
+                    $f->name   = trans('sanatorium/orderspaymentthepay::settings.gateUrl.label');
+                    $f->info   = trans('sanatorium/orderspaymentthepay::settings.gateUrl.info');
+                    $f->type   = 'input';
+                    $f->config = 'sanatorium-orderspaymentthepay.gateUrl';
+                });
+
+                $f->field('merchantId', function ($f) {
+                    $f->name   = trans('sanatorium/orderspaymentthepay::settings.merchantId.label');
+                    $f->info   = trans('sanatorium/orderspaymentthepay::settings.merchantId.info');
+                    $f->type   = 'input';
+                    $f->config = 'sanatorium-orderspaymentthepay.merchantId';
+                });
+
+                $f->field('accountId', function ($f) {
+                    $f->name   = trans('sanatorium/orderspaymentthepay::settings.accountId.label');
+                    $f->info   = trans('sanatorium/orderspaymentthepay::settings.accountId.info');
+                    $f->type   = 'input';
+                    $f->config = 'sanatorium-orderspaymentthepay.accountId';
+                });
+
+                $f->field('password', function ($f) {
+                    $f->name   = trans('sanatorium/orderspaymentthepay::settings.password.label');
+                    $f->info   = trans('sanatorium/orderspaymentthepay::settings.password.info');
+                    $f->type   = 'input';
+                    $f->config = 'sanatorium-orderspaymentthepay.password';
+                });
+
+                $f->field('dataApiPassword', function ($f) {
+                    $f->name   = trans('sanatorium/orderspaymentthepay::settings.dataApiPassword.label');
+                    $f->info   = trans('sanatorium/orderspaymentthepay::settings.dataApiPassword.info');
+                    $f->type   = 'input';
+                    $f->config = 'sanatorium-orderspaymentthepay.dataApiPassword';
+                });
+
+                $f->field('webServicesWsdl', function ($f) {
+                    $f->name   = trans('sanatorium/orderspaymentthepay::settings.webServicesWsdl.label');
+                    $f->info   = trans('sanatorium/orderspaymentthepay::settings.webServicesWsdl.info');
+                    $f->type   = 'input';
+                    $f->config = 'sanatorium-orderspaymentthepay.webServicesWsdl';
+                });
+
+                $f->field('dataWebServicesWsdl', function ($f) {
+                    $f->name   = trans('sanatorium/orderspaymentthepay::settings.dataWebServicesWsdl.label');
+                    $f->info   = trans('sanatorium/orderspaymentthepay::settings.dataWebServicesWsdl.info');
+                    $f->type   = 'input';
+                    $f->config = 'sanatorium-orderspaymentthepay.dataWebServicesWsdl';
+                });
+            });
+        });
 	},
 
 	/*
